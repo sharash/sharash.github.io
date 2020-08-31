@@ -16,7 +16,7 @@ For any given point, find a set of reference points, for example the nearest nei
 
 To put it another way, find the stable features for the reference points, then measure how far away the point of interest is from the reference points in these stable features. In the following image, SOD finds the green hyperplane (line), and measures the distance between the red point and the line to determine whether a point is an outlier.
 
-![sod-points](/docs/images/sod-points.png)
+![sod-points](/docs/images/sod/sod-points.png)
 {: .centered }
 
 At this point, I suggest a simple modification: what if we use a PCA to create a variance-maximizing hyperplane fit to the reference points, and measure the distance to the point of interest? In other words, instead of creating a hyperplane using a subset of the features, we create the hyperplane using a linear combination of all features (using PCA).
