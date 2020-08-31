@@ -29,7 +29,7 @@ To explain it using images, SOD creates a hyperplane (line) along the axis that 
 Unlike SOD, the hyperplane does not need to be parallel to the feature axes. In theory, this makes PCA outlier detection more flexible and thus useful for a greater range of datasets.
 
 ## Results on real data
-To assess the quality of the methods, I use three datasets where some points have been labeled outliers. Here are the ROC curves for SOD:
+To assess the quality of the methods, I use three datasets with ground-truth outlier annotation (downloaded from [ODDS](http://odds.cs.stonybrook.edu/)). Here are the ROC curves for SOD:
 
 ![sod-roc](/images/sod/sod-roc.png)
 {: .centered }
