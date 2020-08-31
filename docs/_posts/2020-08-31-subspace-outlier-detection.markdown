@@ -23,7 +23,7 @@ At this point, I suggest a simple modification: what if we use a PCA to create a
 
 To explain it using images, SOD creates a hyperplane (line) along the axis that the reference point features vary the most, as in the figure above, and then measures the distance between that line and the point of interest. PCA outlier detection finds the hyperplane (line) that maximizes the variance of the reference point features:
 
-![pcaod-points](/docs/images/pcaod-points.png)
+![pcaod-points](/docs/images/sod/pcaod-points.png)
 {: .centered }
 
 Unlike SOD, the hyperplane does not need to be parallel to the feature axes. In theory, this makes PCA outlier detection more flexible and thus useful for a greater range of datasets.
@@ -31,12 +31,12 @@ Unlike SOD, the hyperplane does not need to be parallel to the feature axes. In 
 ## Results on real data
 To assess the quality of the methods, I use three datasets where some points have been labeled outliers. Here are the ROC curves for SOD:
 
-![sod-roc](/docs/images/sod-roc.png)
+![sod-roc](/docs/images/sod/sod-roc.png)
 {: .centered }
 
 and the corresponding curves for PCAOD:
 
-![pcaod-roc](/docs/images/pcaod-roc.png)
+![pcaod-roc](/docs/images/sod/pcaod-roc.png)
 {: .centered }
 
 The PCA-based method seems to have a slight edge on the arrythmia and ionosphere datasets.
