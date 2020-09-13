@@ -4,6 +4,7 @@ title:  "The schedule-adjusted league table"
 date:   2020-09-13 19:23:33 +0200
 ---
 In most soccer leagues, the league table is the standard way to rank teams, and is used at the end of the season to crown champions and choose teams for promotion and relegation, as well as qualification for international competitions. League points are gained by winning or drawing games. However, the table does not take into account the difficulty of opponents; winning against the strongest team in the league is worth as many points as winning against the weakest. As a consequence, the schedule of when teams play each other can skew the ranking of teams in favor of those with easier schedules. This is more of a problem towards the beginning of the season. As a side note, the question of how to rank teams is more pertinent in systems where not everyone plays each other, for example the NBA.
+
 The [schedule-adjusted league table (SALT)](https://statsbomb.com/2018/11/introducing-the-schedule-adjusted-league-table/) was proposed by Constantinos Chappas as a better way to tell how well teams have been doing so far. Basically, for each pair of teams, SALT takes into account the difference in points they have gained from equivalent matchups at the equivalent venue. In doing so, it automatically considers schedule difficulty, and may therefore represent a better ranking of teams than the regular league table.
 
 SALT uses a linear model: $$M P = R$$, where $$M$$ is a 190*20 matrix of every matchup times every team, $$R$$ is a 190-vector of relative points, so the difference in points per game for the games that both teams have played, and $$P$$ is a 20-vector of how many more points per game the team earns compared to average (will be scaled to points later), to be solved for with least-squares. For additional details, check the original post by Chappas.
@@ -213,12 +214,6 @@ df.salt %>% group_by(team) %>%
   %>% slice_max(n=1,order_by=abs.diff) %>% ungroup()
 ```
 
-| Header 1  | Header 2            | Header 3  |
-| --------- | ------------------- | --------- |
-| Some data | Cell 2              | Cell 3    | Ignored | Ignored |
-| data      | Some long data here | more data |
-
-
 | team | matchday | actual.points | salt.points | abs.diff |
 |------|----------|---------------|-------------|----------|
 | ATA  | 10       | 12            | 10.11       | 1.89     |
@@ -276,6 +271,6 @@ animate.salt(df.salt, fps=10)
 
 A team above the diagonal line has is perhaps lower in the league table than performances merit due to a difficult schedule. Conversely, a team below the diagonal has many difficult matchups to come, and may thus drift down the league table in the future.
 
-So there you have it! This is just a simple adjustment, but the model can certainly be extended by looking at recent team form, more advanced metrics like expected goals, and so on. For some other alternative league tables, take a look at:
+So that's the schedule-adjusted league table. This is just a simple adjustment, but the model can certainly be extended by looking at recent team form, more advanced metrics like expected goals, and so on. For some other alternative league tables, take a look at:
 - [alt-3.uk](https://alt-3.uk/leagues/italy-serie-a/) and their [methodology](https://alt-3.uk/about/the-maths/)
 - [fivethirtyeight](https://projects.fivethirtyeight.com/soccer-predictions/serie-a/) and their [methodology](https://fivethirtyeight.com/methodology/how-our-club-soccer-predictions-work/)
