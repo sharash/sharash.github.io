@@ -3,7 +3,7 @@ layout: post
 title:  "Schedule-adjusted league table"
 date:   2020-09-13 19:23:33 +0200
 ---
-In most soccer leagues, the league table is the standard way to rank teams, and is used at the end of the season to crown champions and choose teams for promotion and relegation, as well as qualification for international competitions. League points are gained by winning or drawing games. However, the table does not take into account the difficulty of opponents; winning against the strongest team in the league is worth as many points as winning against the weakest. As a consequence, the schedule of when teams play each other can skew the ranking of teams in favor of those with easier schedules. This is more of a problem towards the beginning of the season.
+In most soccer leagues, the league table is the standard way to rank teams, and is used at the end of the season to crown champions and choose teams for promotion and relegation, as well as qualification for international competitions. League points are gained by winning or drawing games. However, the table does not take into account the difficulty of opponents; winning against the strongest team in the league is worth as many points as winning against the weakest. As a consequence, the schedule of when teams play each other can skew the ranking of teams in favor of those with easier schedules. This is more of a problem towards the beginning of the season. As a side note, the question of how to rank teams is more pertinent in systems where not everyone plays each other, for example the NBA.
 The [schedule-adjusted league table (SALT)](https://statsbomb.com/2018/11/introducing-the-schedule-adjusted-league-table/) was proposed by Constantinos Chappas as a better way to tell how well teams have been doing so far. Basically, for each pair of teams, SALT takes into account the difference in points they have gained from equivalent matchups at the equivalent venue. In doing so, it automatically considers schedule difficulty, and may therefore represent a better ranking of teams than the regular league table.
 
 SALT uses a linear model: $$M P = R$$, where $$M$$ is a 190*20 matrix of every matchup times every team, $$R$$ is a 190-vector of relative points, so the difference in points per game for the games that both teams have played, and $$P$$ is a 20-vector of how many more points per game the team earns compared to average (will be scaled to points later), to be solved for with least-squares. For additional details, check the original post by Chappas.
@@ -135,7 +135,7 @@ create.relative.point.matrix = function(games.played, points.so.far){
 ```
 
 
-To obtain the least-squares solution, I could use lsfit, but in this case I used the Moore-Penrose pseudoinverse (via SVD) instead.
+To obtain the least-squares solution, I could use lsfit, but in this case I use the Moore-Penrose pseudoinverse (via SVD) instead.
 ```r
 # solve linear system AX=Y with Moore-Penrose pseudoinverse
 mp.solve = function(A, Y, tol=1e-8){
@@ -202,39 +202,44 @@ for (i.round in 1:n.rounds){
 }
 ```
 
+Some notes on this:
+- avg.points changes with each matchday; this is so that SALT on an ongoing season will exactly match the SALT for the corresponding matchday once the full season results are in. In other words, SALT for a matchday won’t change based on how far along a season has come.
+- unlike regular league points, SALT can decrease from one matchday to the next, depending on other teams' results.
+-
+
 Okay, so now we have the SALT points for each matchday. Let's start by seeing when each team had the biggest difference between actual points and ajusted points:
 ```r
 df.salt %>% group_by(team) %>%
   mutate(abs.diff = abs(salt.points-actual.points))
   %>% slice_max(n=1,order_by=abs.diff) %>% ungroup()
 ```
-| team | matchday | actual.points | salt.points      | abs.diff         |
-|------|----------|---------------|------------------|------------------|
-| ATA  | 10       | 12            | 10.11 | 1.89 |
-| BOL  | 13       | 11            | 8.96 | 2.04 |
-| CAG  | 17       | 17            | 19.06 | 2.06  |
-| CHI  | 6        | 2             | 4.7              | 2.7              |
-| EMP  | 18       | 16            | 12.68 | 3.32 |
-| FIO  | 13       | 18            | 15.85 | 2.15 |
-| FRO  | 11       | 6             | 1.24 | 4.76 |
-| GEN  | 8        | 12            | 8.63 | 3.37 |
-| INT  | 11       | 25            | 27.92 | 2.93 |
-| JUV  | 3        | 9             | 6.1              | 2.9              |
-| LAZ  | 13       | 23            | 25.48 | 2.48 |
-| MIL  | 15       | 26            | 28.71 | 2.70 |
-| NAP  | 26       | 56            | 60.15 | 4.15 |
-| PAR  | 10       | 13            | 8.95 | 4.05 |
-| ROM  | 8        | 14            | 12.2             | 1.8              |
-| SAM  | 11       | 15            | 17.92          | 2.92           |
-| SAS  | 9        | 14            | 17.65            | 3.65             |
-| SPA  | 9        | 12            | 16.3             | 4.3              |
-| TOR  | 21       | 30            | 32.64 | 2.64 |
-| UDI  | 15       | 13            | 14.87 | 1.87 |
+| team | matchday | actual.points | salt.points | abs.diff |
+|------|----------|---------------|-------------|----------|
+| ATA  | 10       | 12            | 10.11       | 1.89     |
+| BOL  | 13       | 11            | 8.96        | 2.04     |
+| CAG  | 17       | 17            | 19.06       | 2.06     |
+| CHI  | 6        | 2             | 4.70        | 2.70     |
+| EMP  | 18       | 16            | 12.68       | 3.32     |
+| FIO  | 13       | 18            | 15.85       | 2.15     |
+| FRO  | 11       | 6             | 1.24        | 4.76     |
+| GEN  | 8        | 12            | 8.63        | 3.37     |
+| INT  | 11       | 25            | 27.92       | 2.92     |
+| JUV  | 3        | 9             | 6.10        | 2.90     |
+| LAZ  | 13       | 23            | 25.48       | 2.48     |
+| MIL  | 15       | 26            | 28.70       | 2.70     |
+| NAP  | 26       | 56            | 60.15       | 4.15     |
+| PAR  | 10       | 13            | 8.95        | 4.05     |
+| ROM  | 8        | 14            | 12.20       | 1.80     |
+| SAM  | 11       | 15            | 17.92       | 2.92     |
+| SAS  | 9        | 14            | 17.65       | 3.65     |
+| SPA  | 9        | 12            | 16.30       | 4.30     |
+| TOR  | 21       | 30            | 32.64       | 2.64     |
+| UDI  | 15       | 13            | 14.87       | 1.87     |
 
 
 And how do the actual points compare with adjusted points for each matchday? Let's plot it!
 ```r
-animate.salt = function(df, fps=4, width=720, height=720){
+animate.salt = function(df, fps=4, seconds.per.round=1.5, width=720, height=720){
   points.min = min(min(df.salt$actual.points),
     min(df.salt$salt.points))
   points.max = max(max(df.salt$actual.points),
@@ -253,13 +258,13 @@ animate.salt = function(df, fps=4, width=720, height=720){
     ease_aes('cubic-in-out') +
     ggtitle('Matchday {closest_state}')
 
-  animate(p.anim, nframes=(n.rounds+1)*fps, fps=fps,
+  animate(p.anim, nframes=(n.rounds+1)*seconds.per.round*fps, fps=fps,
     end_pause=6*fps, width=width, height=height)
 }
 
-animate.salt(df.salt)
+animate.salt(df.salt, fps=10)
 ```
-![salt-anim](/images/salt/salt-anim-720.gif)
+![salt-anim](/images/salt/matchday-salt-720-10.gif)
 {: .centered }
 
 A team above the diagonal line has is perhaps lower in the league table than performances merit due to a difficult schedule. Conversely, a team below the diagonal has many difficult matchups to come, and may thus drift down the league table in the future.
