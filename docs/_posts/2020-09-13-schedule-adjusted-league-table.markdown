@@ -136,7 +136,7 @@ create.relative.point.matrix = function(games.played, points.so.far){
 ```
 
 
-To obtain the least-squares solution, I could use lsfit, but in this case I use the Moore-Penrose pseudoinverse (via SVD) instead.
+To obtain the least-squares solution, I could use `lsfit`, but in this case I use the Moore-Penrose pseudoinverse (via SVD) instead.
 ```r
 # solve linear system AX=Y with Moore-Penrose pseudoinverse
 mp.solve = function(A, Y, tol=1e-8){
@@ -207,7 +207,7 @@ Some notes on this:
 - avg.points changes with each matchday; this is so that SALT on an ongoing season will exactly match the SALT for the corresponding matchday once the full season results are in. In other words, SALT for a matchday won’t change based on how far along a season has come.
 - Unlike regular league points, SALT can decrease from one matchday to the next, depending on other teams' results.
 
-Okay, so now we have the SALT points for each matchday. Let's start by seeing when each team had the biggest difference between actual points and ajusted points:
+Okay, so now we have the SALT points for each matchday. Let's start by seeing when each team had the biggest difference between actual points and adjusted points:
 ```r
 df.salt %>% group_by(team) %>%
   mutate(abs.diff = abs(salt.points-actual.points))
