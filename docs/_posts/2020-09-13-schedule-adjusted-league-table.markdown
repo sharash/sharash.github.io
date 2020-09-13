@@ -204,7 +204,7 @@ for (i.round in 1:n.rounds){
 ```
 
 Some notes on this:
-- avg.points changes with each matchday; this is so that SALT on an ongoing season will exactly match the SALT for the corresponding matchday once the full season results are in. In other words, SALT for a matchday won’t change based on how far along a season has come.
+- `avg.points` changes with each matchday; this is so that SALT on an ongoing season will exactly match the SALT for the corresponding matchday once the full season results are in. In other words, SALT for a matchday won’t change based on how far along a season has come.
 - Unlike regular league points, SALT can decrease from one matchday to the next, depending on other teams' results.
 
 Okay, so now we have the SALT points for each matchday. Let's start by seeing when each team had the biggest difference between actual points and adjusted points:
