@@ -2,7 +2,6 @@
 layout: post
 title:  "Subspace outlier detection"
 date:   2020-08-31 19:23:33 +0200
-categories: outliers PCA
 ---
 I recently created a Jupyter notebook with a Julia implementation of the outlier detection algorithm from Outlier Detection in Axis-Parallel Subspaces of High Dimensional Data, Kriegel et al., 2009.
 
