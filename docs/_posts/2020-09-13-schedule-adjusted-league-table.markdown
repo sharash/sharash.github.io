@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Schedule-adjusted league table"
+title:  "The schedule-adjusted league table"
 date:   2020-09-13 19:23:33 +0200
 ---
 In most soccer leagues, the league table is the standard way to rank teams, and is used at the end of the season to crown champions and choose teams for promotion and relegation, as well as qualification for international competitions. League points are gained by winning or drawing games. However, the table does not take into account the difficulty of opponents; winning against the strongest team in the league is worth as many points as winning against the weakest. As a consequence, the schedule of when teams play each other can skew the ranking of teams in favor of those with easier schedules. This is more of a problem towards the beginning of the season. As a side note, the question of how to rank teams is more pertinent in systems where not everyone plays each other, for example the NBA.
@@ -46,7 +46,7 @@ create.matchup.index.matrix = function(n.teams){
 M = create.matchup.index.matrix(n.teams)
 ```
 
-To calculate $$R$$, I will use two helper matrices: one 20*40 matrix of , and another matrix with the same dimensions containing the number of points the row team gained from the match.
+To calculate $$R$$, I will use two helper matrices: one 20*40 matrix of points gained per match, and another matrix with the same dimensions containing the matchday when the game took place. Each matrix contains one row per team, and one column per matchup, so 20 opponents at home plus 20 opponents away. Using these helper matrices, we can easily see which opponents two teams have played in common, which we'll need to calculate SALT.
 ```r
 # create matrices to record round and points for each game
 game.points = matrix(0, nrow=n.teams, ncol=2*n.teams,
@@ -204,8 +204,7 @@ for (i.round in 1:n.rounds){
 
 Some notes on this:
 - avg.points changes with each matchday; this is so that SALT on an ongoing season will exactly match the SALT for the corresponding matchday once the full season results are in. In other words, SALT for a matchday won’t change based on how far along a season has come.
-- unlike regular league points, SALT can decrease from one matchday to the next, depending on other teams' results.
--
+- Unlike regular league points, SALT can decrease from one matchday to the next, depending on other teams' results.
 
 Okay, so now we have the SALT points for each matchday. Let's start by seeing when each team had the biggest difference between actual points and ajusted points:
 ```r
@@ -213,6 +212,13 @@ df.salt %>% group_by(team) %>%
   mutate(abs.diff = abs(salt.points-actual.points))
   %>% slice_max(n=1,order_by=abs.diff) %>% ungroup()
 ```
+
+| Header 1  | Header 2            | Header 3  |
+| --------- | ------------------- | --------- |
+| Some data | Cell 2              | Cell 3    | Ignored | Ignored |
+| data      | Some long data here | more data |
+
+
 | team | matchday | actual.points | salt.points | abs.diff |
 |------|----------|---------------|-------------|----------|
 | ATA  | 10       | 12            | 10.11       | 1.89     |
@@ -236,6 +242,7 @@ df.salt %>% group_by(team) %>%
 | TOR  | 21       | 30            | 32.64       | 2.64     |
 | UDI  | 15       | 13            | 14.87       | 1.87     |
 
+So the difference between regular and schedule-adjusted league points is always less than 5 points for the 2018-2019 Serie A season.
 
 And how do the actual points compare with adjusted points for each matchday? Let's plot it!
 ```r
@@ -269,8 +276,6 @@ animate.salt(df.salt, fps=10)
 
 A team above the diagonal line has is perhaps lower in the league table than performances merit due to a difficult schedule. Conversely, a team below the diagonal has many difficult matchups to come, and may thus drift down the league table in the future.
 
-
-
-For some other alternative league tables, take a look at:
+So there you have it! This is just a simple adjustment, but the model can certainly be extended by looking at recent team form, more advanced metrics like expected goals, and so on. For some other alternative league tables, take a look at:
 - [alt-3.uk](https://alt-3.uk/leagues/italy-serie-a/) and their [methodology](https://alt-3.uk/about/the-maths/)
 - [fivethirtyeight](https://projects.fivethirtyeight.com/soccer-predictions/serie-a/) and their [methodology](https://fivethirtyeight.com/methodology/how-our-club-soccer-predictions-work/)
