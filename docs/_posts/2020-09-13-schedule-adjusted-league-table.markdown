@@ -13,22 +13,38 @@ SALT has some attractive properties:
 - At the end of the season, SALT and the actual league table are equivalent!
 
 Let’s code this model up in R, and look at some results for the 2018-2019 Serie A season.
-  # load some packages
-  library(jsonlite)
-  library(dplyr)
-  library(ggplot2)
-  library(gganimate)
-  theme_set(theme_bw())
+```r
+# load some packages
+library(jsonlite)
+library(dplyr)
+library(ggplot2)
+library(gganimate)
+theme_set(theme_bw())
 
-  # get the data from https://github.com/openfootball/football.json
-  it.teams = fromJSON('https://raw.githubusercontent.com/openfootball/football.json/master/2018-19/it.1.clubs.json')$clubs
-  n.teams = nrow(it.teams)
-  # let's add team codes for Frosinone and SPAL
-  it.teams[19,2]='FRO'
-  it.teams[20,2]='SPA'
-  it.results = fromJSON('https://raw.githubusercontent.com/openfootball/football.json/master/2018-19/it.1.json')$rounds$matches
-  n.rounds = length(it.results)
+# get the data from https://github.com/openfootball/football.json
+it.teams = fromJSON('https://raw.githubusercontent.com/openfootball/football.json/master/2018-19/it.1.clubs.json')$clubs
+n.teams = nrow(it.teams)
+# let's add team codes for Frosinone and SPAL
+it.teams[19,2]='FRO'
+it.teams[20,2]='SPA'
+it.results = fromJSON('https://raw.githubusercontent.com/openfootball/football.json/master/2018-19/it.1.json')$rounds$matches
+n.rounds = length(it.results)
 
+# start by creating M matrix
+create.matchup.index.matrix = function(n.teams){
+  M = matrix(0, nrow=n.teams*(n.teams-1)/2, ncol=n.teams)
+  i.row = 1
+  for (i1 in 1:(n.teams-1)){
+    for (i2 in (i1+1):n.teams){
+      M[i.row, i1] = 1
+      M[i.row, i2] = -1
+      i.row = i.row + 1
+    }
+  }
+  return(M)
+}
+M = create.matchup.index.matrix(n.teams)
+```
 
 
 To calculate $$R$$, I will use two helper matrices: one 40*20 matrix of , and another matrix with the same dimensions containing the number of points the row team gained from the match.
