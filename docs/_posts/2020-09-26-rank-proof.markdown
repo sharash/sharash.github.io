@@ -49,6 +49,7 @@ c_{2,\cdot}
 c_{m,\cdot}
 \color{#0066ff}R
 \end{pmatrix}
+\\
 &=
 \begin{pmatrix}
 \color{#ff8c1a}
