@@ -53,11 +53,13 @@ c_{m,\cdot}
 \color{#ff8c1a}
 c_{1,1}
 \color{#0066ff}
-r_{1,\cdot} +
+r_{1,\cdot}
+\color{black} +
 \color{#ff8c1a}
 c_{2,1}
 \color{#0066ff}
-r_{2,\cdot} +
+r_{2,\cdot}
+\color{black} +
 \cdots
 +
 \color{#ff8c1a}
@@ -68,11 +70,13 @@ r_{k,\cdot}
 \color{#ff8c1a}
 c_{1,2}
 \color{#0066ff}
-r_{1,\cdot} +
+r_{1,\cdot}
+\color{black} +
 \color{#ff8c1a}
 c_{2,2}
 \color{#0066ff}
-r_{2,\cdot} +
+r_{2,\cdot}
+\color{black} +
 \cdots
 +
 \color{#ff8c1a}
@@ -84,11 +88,13 @@ r_{k,\cdot}
 \color{#ff8c1a}
 c_{1,m}
 \color{#0066ff}
-r_{1,\cdot} +
+r_{1,\cdot}
+\color{black} +
 \color{#ff8c1a}
 c_{2,m}
 \color{#0066ff}
-r_{2,\cdot} +
+r_{2,\cdot}
+\color{black} +
 \cdots
 +
 \color{#ff8c1a}
