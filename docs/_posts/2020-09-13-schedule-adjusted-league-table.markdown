@@ -269,8 +269,8 @@ animate.salt(df.salt, fps=10)
 ![salt-anim](/images/salt/matchday-salt-720-10.gif)
 {: .centered }
 
-A team above the diagonal line has is perhaps lower in the league table than performances merit due to a difficult schedule. Conversely, a team below the diagonal has many difficult matchups to come, and may thus drift down the league table in the future.
+A team above the diagonal line is perhaps lower in the league table than performances merit due to a difficult schedule. Conversely, a team below the diagonal has many difficult matchups to come, and may thus drift down the league table in the future.
 
-So that's the schedule-adjusted league table. This is just a simple adjustment, but the model can certainly be extended by looking at recent team form, more advanced metrics like expected goals, and so on. For some other alternative league tables, take a look at:
+So that's the schedule-adjusted league table: a more nuanced way of looking at the results so far. This is just a simple adjustment, but the model can certainly be extended by looking at recent team form, more advanced metrics like expected goals, and so on. For some other alternative league tables, take a look at:
 - [alt-3.uk](https://alt-3.uk/leagues/italy-serie-a/) and their [methodology](https://alt-3.uk/about/the-maths/)
 - [fivethirtyeight](https://projects.fivethirtyeight.com/soccer-predictions/serie-a/) and their [methodology](https://fivethirtyeight.com/methodology/how-our-club-soccer-predictions-work/)
