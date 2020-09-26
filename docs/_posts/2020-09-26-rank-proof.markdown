@@ -107,6 +107,7 @@ r_{k,\cdot}
 \\
 \end{pmatrix}
 $$.
+{: .centered }
 
 At this point, it is clear that the rows of $$A$$ are linear combinations of the $$k$$ rows of $$R$$, which implies that the row space of $$A$$ has dimension at most $$k$$. It follows that $$\textrm{rank}_\textrm{row}(A) \leq \textrm{rank}_\textrm{col}(A)$$. Following the same steps with the transpose of $$A$$ leads to the reverse inequality, thus completing the equality and the proof.
 
