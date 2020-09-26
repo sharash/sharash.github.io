@@ -24,7 +24,8 @@ with $$\textrm{rank}_\textrm{col}(A) = k$$.
 Now consider the $$m \times k$$ matrix $$C$$, whose columns form a basis of the column space of $$A$$. Then each column of $$A$$ can be formed by taking a linear combination the columns of $$C$$, $$c_{\cdot,1},..,c_{\cdot,k}$$. Let $$R$$ be the $$k \times n$$ matrix whose ith column, $$r_{\cdot,i}$$ contains the coefficients of the linear combination to form the ith column of $$A$$. More concisely, $$A=CR$$:
 
 $$
-A=\color{#ff8c1a}C \color{#0066ff}R \color{black}=
+\begin{align*}
+A &= \color{#ff8c1a}C \color{#0066ff}R \color{black}=
 \begin{pmatrix}
 \color{#ff8c1a}
 c_{1,\cdot} \\
@@ -48,10 +49,7 @@ c_{2,\cdot}
 c_{m,\cdot}
 \color{#0066ff}R
 \end{pmatrix}
-=
-$$
-
-$$
+&=
 \begin{pmatrix}
 \color{#ff8c1a}
 c_{1,1}
@@ -106,8 +104,8 @@ c_{k,m}
 r_{k,\cdot}
 \\
 \end{pmatrix}
+\end{align*}
 $$.
-{: .centered }
 
 At this point, it is clear that the rows of $$A$$ are linear combinations of the $$k$$ rows of $$R$$, which implies that the row space of $$A$$ has dimension at most $$k$$. It follows that $$\textrm{rank}_\textrm{row}(A) \leq \textrm{rank}_\textrm{col}(A)$$. Following the same steps with the transpose of $$A$$ leads to the reverse inequality, thus completing the equality and the proof.
 
