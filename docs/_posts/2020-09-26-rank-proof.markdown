@@ -52,7 +52,6 @@ c_{m,\cdot}
 $$
 
 $$
-=
 \begin{pmatrix}
 \color{#ff8c1a}
 c_{1,1}
