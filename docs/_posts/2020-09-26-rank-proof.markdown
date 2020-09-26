@@ -25,74 +25,74 @@ with $$\textrm{rank}_\textrm{col} = k$$.
 Now consider the $$m \times k$$ matrix $$C$$, whose columns form a basis of the column space of $$A$$. Then each column of $$A$$ can be formed by taking a linear combination the columns of $$C$$, $$c_{\cdot,1},..,c_{\cdot,k}$$. Let $$R$$ be the $$k \times n$$ matrix whose ith column, $$r_{\cdot,i}$$ contains the coefficients of the linear combination to form the ith column of $$A$$. More concisely, $$A=CR$$.
 
 $$
-A=\color{magenta}C \color{#0066ff}R \color{black}=
+A=\color{#ff4d4d}C \color{#0066ff}R \color{black}=
 \begin{pmatrix}
-\color{magenta}
+\color{#ff4d4d}
 c_{1,\cdot} \\
-\color{magenta}
+\color{#ff4d4d}
 c_{2,\cdot} \\
 \vdots  \\
-\color{magenta}
+\color{#ff4d4d}
 c_{m,\cdot}
 \end{pmatrix}
 \color{#0066ff}R \color{black}
 =
 \begin{pmatrix}
-\color{magenta}
+\color{#ff4d4d}
 c_{1,\cdot}
 \color{#0066ff}R \\
-\color{magenta}
+\color{#ff4d4d}
 c_{2,\cdot}
 \color{#0066ff}R \\
 \vdots  \\
-\color{magenta}
+\color{#ff4d4d}
 c_{m,\cdot}
 \color{#0066ff}R
 \end{pmatrix}
 =
 \begin{pmatrix}
-\color{magenta}
+\color{#ff4d4d}
 c_{1,1}
 \color{#0066ff}
 r_{1,\cdot} +
-\color{magenta}
+\color{#ff4d4d}
 c_{2,1}
 \color{#0066ff}
 r_{2,\cdot} +
 \cdots
 +
-\color{magenta}
+\color{#ff4d4d}
 c_{k,1}
 \color{#0066ff}
 r_{k,\cdot}
 \\
-\color{magenta}
+\color{#ff4d4d}
 c_{1,2}
 \color{#0066ff}
 r_{1,\cdot} +
-\color{magenta}
+\color{#ff4d4d}
 c_{2,2}
 \color{#0066ff}
 r_{2,\cdot} +
 \cdots
 +
-\color{magenta}
+\color{#ff4d4d}
 c_{k,2}
 \color{#0066ff}
 r_{k,\cdot}
 \\
 \vdots  \\
-\color{magenta}
+\color{#ff4d4d}
 c_{1,m}
 \color{#0066ff}
 r_{1,\cdot} +
-\color{magenta}
+\color{#ff4d4d}
 c_{2,m}
 \color{#0066ff}
 r_{2,\cdot} +
 \cdots
 +
-\color{magenta}
+\color{#ff4d4d}
 c_{k,m}
 \color{#0066ff}
 r_{k,\cdot}
