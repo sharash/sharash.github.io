@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "A proof of row rank == column rank"
+title:  "A concise proof of row rank == column rank"
 date:   2020-09-26 19:23:33 +0200
 ---
 As I was reading up on linear algebra lately, I was looking for a more intuitive proof of row rank == column rank than the one in Axler's book. This led me to Wardlaw's concise proof [1], which happens to use a matrix factorization.
@@ -52,6 +52,7 @@ c_{m,\cdot}
 $$
 
 $$
+=
 \begin{pmatrix}
 \color{#ff8c1a}
 c_{1,1}
