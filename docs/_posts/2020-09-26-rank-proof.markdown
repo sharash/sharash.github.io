@@ -21,7 +21,7 @@ $$
 
 with $$\textrm{rank}_\textrm{col}(A) = k$$.
 
-Now consider the $$m \times k$$ matrix $$C$$, whose columns form a basis of the column space of $$A$$. Then each column of $$A$$ can be formed by taking a linear combination the columns of $$C$$, $$c_{\cdot,1},..,c_{\cdot,k}$$. Let $$R$$ be the $$k \times n$$ matrix whose ith column, $$r_{\cdot,i}$$ contains the coefficients of the linear combination to form the ith column of $$A$$. More concisely, $$A=CR$$.
+Now consider the $$m \times k$$ matrix $$C$$, whose columns form a basis of the column space of $$A$$. Then each column of $$A$$ can be formed by taking a linear combination the columns of $$C$$, $$c_{\cdot,1},..,c_{\cdot,k}$$. Let $$R$$ be the $$k \times n$$ matrix whose ith column, $$r_{\cdot,i}$$ contains the coefficients of the linear combination to form the ith column of $$A$$. More concisely, $$A=CR$$:
 
 $$
 A=\color{#ff8c1a}C \color{#0066ff}R \color{black}=
@@ -49,7 +49,9 @@ c_{m,\cdot}
 \color{#0066ff}R
 \end{pmatrix}
 =
-\\
+$$
+
+$$
 \begin{pmatrix}
 \color{#ff8c1a}
 c_{1,1}
