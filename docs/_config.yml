@@ -30,6 +30,8 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 # remote_theme: aidewoode/jekyll-theme-mint
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-scholar
 
 # light/dark
 blog_theme: auto
