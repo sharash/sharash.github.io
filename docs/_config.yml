@@ -31,8 +31,7 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 plugins:
   - jekyll-feed
   - jekyll-sitemap
-  - jekyll-scholar
-    - jekyll-katex
+  - jekyll-katex
 katex:
   js_path: "assets"  # Path used to search for katex.min.js
   rendering_options:
