@@ -23,12 +23,14 @@ library(gganimate)
 theme_set(theme_bw())
 
 # get the data from https://github.com/openfootball/football.json
-it.teams = fromJSON('https://raw.githubusercontent.com/openfootball/football.json/master/2018-19/it.1.clubs.json')$clubs
+url.clubs = 'https://raw.githubusercontent.com/openfootball/football.json/master/2018-19/it.1.clubs.json'
+url.results = 'https://raw.githubusercontent.com/openfootball/football.json/master/2018-19/it.1.json'
+it.teams = fromJSON(url.clubs)$clubs
 n.teams = nrow(it.teams)
 # let's add team codes for Frosinone and SPAL
 it.teams[19,2]='FRO'
 it.teams[20,2]='SPA'
-it.results = fromJSON('https://raw.githubusercontent.com/openfootball/football.json/master/2018-19/it.1.json')$rounds$matches
+it.results = fromJSON(url.results)$rounds$matches
 n.rounds = length(it.results)
 
 # start by creating M matrix
@@ -70,7 +72,8 @@ for (i.round in 1:n.rounds){
 
     # record info on when game was played
     game.matchday[team1.index, team2.index] = i.round
-    game.matchday[team2.index, team1.index + n.teams] = i.round # add n.teams because game is away for team2
+    # add n.teams because game is away for team2
+    game.matchday[team2.index, team1.index + n.teams] = i.round
 
     # translate scoreline to points
     # first extract score for each team
@@ -90,7 +93,8 @@ for (i.round in 1:n.rounds){
     }
 
     game.points[team1.index, team2.index] = points.team1
-    game.points[team2.index, team1.index + n.teams] = points.team2 # add n.teams because game is away for team2
+    # add n.teams because game is away for team2
+    game.points[team2.index, team1.index + n.teams] = points.team2
   }
 }
 
@@ -118,13 +122,17 @@ create.relative.point.matrix = function(games.played, points.so.far){
 
       # add points for head to head matches
       if (games.played[i1, i2]){
-        R[index] = R[index] * n.games.in.common/(n.games.in.common + 1) +
-          (points.so.far[i1, i2] - points.so.far[i2, i1+n.teams])/(n.games.in.common + 1)
+        R[index] = R[index] *
+          n.games.in.common/(n.games.in.common + 1) +
+          (points.so.far[i1, i2] -
+            points.so.far[i2, i1+n.teams])/(n.games.in.common + 1)
         n.games.in.common = n.games.in.common + 1
       }
       if (games.played[i1, i2 + n.teams]){
-        R[index] = R[index] * n.games.in.common/(n.games.in.common + 1) +
-          (points.so.far[i1, i2+n.teams] - points.so.far[i2, i1])/(n.games.in.common + 1)
+        R[index] = R[index] * n.games.in.common/
+          (n.games.in.common + 1) +
+          (points.so.far[i1, i2+n.teams] -
+           points.so.far[i2, i1])/(n.games.in.common + 1)
         n.games.in.common = n.games.in.common + 1
       }
 
@@ -142,7 +150,8 @@ To obtain the least-squares solution, I could use `lsfit`, but in this case I us
 mp.solve = function(A, Y, tol=1e-8){
   svd.res = svd(A)
 
-  # create diagonal matrix with inverse of all singular values greater than tol
+  # create diagonal matrix with inverse of
+  # all singular values greater than tol
   sv.inv = rep(0, length(svd.res$d))
   sv.inv[svd.res$d>tol] = 1/svd.res$d[svd.res$d>tol]
   sv.mat = diag(sv.inv)
@@ -156,7 +165,11 @@ mp.solve = function(A, Y, tol=1e-8){
 }
 
 # and a function to calculate P, then scale to points
-calculate.adjusted.points = function(M, R, game.points, games.played, i.round){
+calculate.adjusted.points = function(M,
+                                     R,
+                                     game.points,
+                                     games.played,
+                                     i.round){
   # use MP pseudoinverse to solve linear system
   P = mp.solve(M, R)
 
@@ -197,8 +210,11 @@ for (i.round in 1:n.rounds){
   for (i.team in 1:n.teams){
     team = it.teams$code[i.team]
     actual.points = sum(points.so.far[i.team,])
-    df.salt = rbind(df.salt, data.frame(team=team, matchday=i.round,
-      actual.points=actual.points, salt.points=salt.points[i.team]))
+    df.salt = rbind(df.salt,
+                    data.frame(team=team,
+                               matchday=i.round,
+                               actual.points=actual.points,
+                               salt.points=salt.points[i.team]))
   }
 }
 ```
@@ -241,27 +257,41 @@ So the difference between regular and schedule-adjusted league points is always 
 
 And how do the actual points compare with adjusted points for each matchday? Let's plot it!
 ```r
-animate.salt = function(df, fps=4, seconds.per.round=1.5, width=720, height=720){
+animate.salt = function(df,
+                        fps=4,
+                        seconds.per.round=1.5,
+                        width=720,
+                        height=720){
   points.min = min(min(df.salt$actual.points),
     min(df.salt$salt.points))
   points.max = max(max(df.salt$actual.points),
     max(df.salt$salt.points))
   p.anim = ggplot(data=df.salt,
-    aes(x=actual.points, y=salt.points, label=team, color=team)) +
+    aes(x=actual.points,
+      y=salt.points,
+      label=team,
+      color=team)) +
     geom_label(size=8) +
     geom_abline(slope=1, color='#a6a6a6') +
-    labs(title='Schedule-adjusted league points', x='Actual league points', y='Schedule-adjusted points') +
+    labs(title='Schedule-adjusted league points',
+         x='Actual league points',
+         y='Schedule-adjusted points') +
     xlim(points.min, points.max) +
     ylim(points.min, points.max) +
-    theme(legend.position="none", text = element_text(size=24)) +
+    theme(legend.position="none",
+          text = element_text(size=24)) +
     transition_states(matchday,
                       transition_length = 2,
                       state_length = 1) +
     ease_aes('cubic-in-out') +
     ggtitle('Matchday {closest_state}')
 
-  animate(p.anim, nframes=(n.rounds+1)*seconds.per.round*fps, fps=fps,
-    end_pause=6*fps, width=width, height=height)
+  animate(p.anim,
+          nframes=(n.rounds+1)*seconds.per.round*fps,
+          fps=fps,
+          end_pause=6*fps,
+          width=width,
+          height=height)
 }
 
 animate.salt(df.salt, fps=10)
