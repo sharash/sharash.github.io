@@ -54,10 +54,12 @@ To calculate $$R$$, I will use two helper matrices: one 20*40 matrix of points g
 # create matrices to record round and points for each game
 game.points = matrix(0, nrow=n.teams, ncol=2*n.teams,
   dimnames=list(it.teams$code, c(it.teams$code, it.teams$code)))
+# use Inf so a team never plays itself
 game.matchday = matrix(Inf, nrow=n.teams, ncol=2*n.teams,
-  dimnames=list(it.teams$code, c(it.teams$code, it.teams$code))) # use Inf so a team never plays itself
+  dimnames=list(it.teams$code, c(it.teams$code, it.teams$code)))
 
-# create vector to translate team name to index, like a dictionary
+# create vector to translate team name to
+# index, like a dictionary
 name.to.index = 1:n.teams
 names(name.to.index) = it.teams$name
 
@@ -92,14 +94,17 @@ for (i.round in 1:n.rounds){
       points.team2=1
     }
 
-    game.points[team1.index, team2.index] = points.team1
+    game.points[team1.index,
+                team2.index] = points.team1
     # add n.teams because game is away for team2
-    game.points[team2.index, team1.index + n.teams] = points.team2
+    game.points[team2.index,
+                team1.index + n.teams] = points.team2
   }
 }
 
 # create function to fill in R
-create.relative.point.matrix = function(games.played, points.so.far){
+create.relative.point.matrix = function(games.played,
+                                        points.so.far){
   n.teams = nrow(points.so.far)
   R = rep(0, n.teams*(n.teams-1)/2)
 
@@ -107,7 +112,8 @@ create.relative.point.matrix = function(games.played, points.so.far){
   for (i1 in 1:(n.teams-1)){
     for (i2 in (i1+1):n.teams){
       # which games have both teams played
-      games.played.in.common = (games.played[i1,] & games.played[i2,])
+      games.played.in.common = (games.played[i1,] &
+                                games.played[i2,])
       n.games.in.common = sum(games.played.in.common)
 
       # only calculate R[index] if they have matches in common
