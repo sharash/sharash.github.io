@@ -19,9 +19,10 @@
 # in the templates via {{ site.myvariable }}.
 
 title: rotation
+author: Arash Shahsavari
 email: arash[x]@hotmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Just a blog.
+  Just an academic website.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
@@ -31,6 +32,7 @@ remote_theme: aidewoode/jekyll-theme-mint
 plugins:
   - jekyll-feed
   - jekyll-sitemap
+  - jekyll-seo-tag
 
 # light/dark
 blog_theme: auto
