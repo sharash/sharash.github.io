@@ -1,7 +1,7 @@
 ---
 layout: page
 title: cv
-permalink: /cv/
+permalink: /cv.pdf/
 ---
 
 <embed src="cv.pdf" type="application/pdf"/>
