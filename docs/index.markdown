@@ -10,6 +10,8 @@ layout: page
 
 ![me](/images/about/head.jpg)
 {: .right }
+<img style="float: right;" src="/images/about/head.jpg" width="200">
+
 
 I'm a bioinformatician at the [Cambridge Stem Cell Institute](https://www.stemcells.cam.ac.uk/) at the [University of Cambridge](https://www.cam.ac.uk/), which means I get to apply machine learning and statistics on big biomedical datasets on a daily basis. I am broadly interested in the application of statistics and machine learning on high-dimensional datasets, with a particular . I am the developer and maintainer of the [ClustAssess R package](https://CRAN.R-project.org/package=ClustAssess).
 
