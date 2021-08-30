@@ -10,7 +10,7 @@ layout: page
 
 <img style="float: right;" src="/images/about/head.jpg" width="200">
 
-I'm a bioinformatician at the [Cambridge Stem Cell Institute](https://www.stemcells.cam.ac.uk/) at the [University of Cambridge](https://www.cam.ac.uk/), which means I get to apply machine learning and statistics on big biomedical datasets on a daily basis. I am broadly interested in the application of statistics and machine learning on high-dimensional datasets, with a particular enthusiasm for unsupervised learning. I am the developer and maintainer of the [ClustAssess R package](https://CRAN.R-project.org/package=ClustAssess).
+I'm a bioinformatician at the [Cambridge Stem Cell Institute](https://www.stemcells.cam.ac.uk/) at the [University of Cambridge](https://www.cam.ac.uk/), which means I get to apply machine learning and statistics on big biomedical datasets on a daily basis. My interests broadly lie in the application of statistics and machine learning on high-dimensional datasets, with a particular enthusiasm for unsupervised learning. I am the developer and maintainer of the [ClustAssess R package](https://CRAN.R-project.org/package=ClustAssess).
 
 I’ve created this webpage to serve as an updated cv, as well as an outlet for some of my interests and learning projects.
 
