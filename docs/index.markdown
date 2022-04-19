@@ -10,9 +10,13 @@ layout: page
 
 <img style="float: right;" src="/images/about/head.jpg" width="200">
 
-I'm a bioinformatician at the [Cambridge Stem Cell Institute](https://www.stemcells.cam.ac.uk/) at the [University of Cambridge](https://www.cam.ac.uk/), which means I get to apply machine learning and statistics on big biomedical datasets on a daily basis. My interests broadly lie in the application of statistics and machine learning on high-dimensional datasets, with a particular enthusiasm for unsupervised learning. I am the developer and maintainer of the [ClustAssess R package](https://CRAN.R-project.org/package=ClustAssess).
+I'm a bioinformatician at the [Cambridge Stem Cell Institute](https://www.stemcells.cam.ac.uk/) at the [University of Cambridge](https://www.cam.ac.uk/), which means I get to apply machine learning and statistics to cutting-edge biomedical research on a daily basis.
 
-I’ve created this webpage to serve as an updated cv, as well as an outlet for some of my interests and learning projects.
+My extensive experience with large-scale biomedical data science has driven my enthusiasm for effective and explainable machine learning for real-world problems, enabling data-driven decision-making. I invest in team-building from recruitment through integration: I have developed skills tests for recruitment and interviewed candidates, trained the wider machine learning community, as well as having provided long-term supervision and mentoring of junior group members. I am also passionate about education and pedagogy for machine learning and related quantitative skills.
+
+During my time in academia I have enjoyed a number of highly inter-disciplinary collaborations which resulted in [several peer-reviewed scientific publications](https://scholar.google.com/citations?hl=en&user=Q_iGdrkAAAAJ&view_op=list_works&sortby=pubdate).
+
+Furthermore, I am the author and maintainer of the [ClustAssess R package](https://github.com/Core-Bioinformatics/ClustAssess), which enables high-resolution evaluation of clustering results.
 
 You can reach me on arash[x]@hotmail.com, where [x] should be replaced by the square root of 73599241.
 
