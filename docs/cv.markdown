@@ -11,20 +11,17 @@ permalink: /cv/
 
 # Arash Shahsavari
 ## Education
-**M.S. in Complex Adaptive Systems - Chalmers University of Technology**  2016-2019
-
+**M.S. in Complex Adaptive Systems - Chalmers University of Technology** *2016-2019*  
 Selected Coursework: Neural Networks, Stochastic Optimization, Information Theory, Dynamical Systems.
 
-**Exchange Studies - Dongguk University**  Fall 2017
-
+**Exchange Studies - Dongguk University** *Fall 2017*  
 Selected Coursework: Multiple View Geometry, Deep Learning.
 
-**Electrical Engineering - Lund University**  2013-2016
-
+**Electrical Engineering - Lund University** *2013-2016*  
 Selected Coursework: Multivariable Calculus, Control Theory, Mathematical Statistics, Numerical Analysis.
 
 ## Experience
-**Bioinformatician - University of Cambridge**  2019-Present
+**Bioinformatician - University of Cambridge** *2019-Present*  
 * Long-term data science work on multiple biomedical projects (60+ datasets for 20+ different projects, typically juggling 4-8 projects at a time), with multiple weekly deliverables.
 * Machine learning and statistics on terabyte-scale datasets,using a broad mix of techniques and tools.
 * Developed [R package ClustAssess](https://cran.r-project.org/package=ClustAssess) from scratch, which I continue to maintain.
