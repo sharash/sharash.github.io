@@ -11,14 +11,14 @@ permalink: /cv/
 
 # Arash Shahsavari
 ## Education
-**M.S. in Complex Adaptive Systems - Chalmers University of Technology** *2016-2019*  
-*Selected Coursework:* Neural Networks, Stochastic Optimization, Information Theory, Dynamical Systems.
+* **M.S. in Complex Adaptive Systems - Chalmers University of Technology** *2016-2019*  
+  *Selected Coursework:* Neural Networks, Stochastic Optimization, Information Theory, Dynamical Systems.
 
-**Exchange Studies - Dongguk University** *Fall 2017*  
-*Selected Coursework:* Multiple View Geometry, Deep Learning.
+* **Exchange Studies - Dongguk University** *Fall 2017*  
+  *Selected Coursework:* Multiple View Geometry, Deep Learning.
 
-**Electrical Engineering - Lund University** *2013-2016*  
-*Selected Coursework:* Multivariable Calculus, Control Theory, Mathematical Statistics, Numerical Analysis.
+* **Electrical Engineering - Lund University** *2013-2016*  
+  *Selected Coursework:* Multivariable Calculus, Control Theory, Mathematical Statistics, Numerical Analysis.
 
 ## Experience
 * **Bioinformatician - University of Cambridge** *2019-Present*  
@@ -43,6 +43,10 @@ permalink: /cv/
 * **Mentorship**
     * Coached Computer Science M.Sc. student through 6-month Cambridge internship with weekly 1-on-1s. Advised and assisted the intern to contribute to open-source software and co-author scientific publication (2021). The person is now joining the group as a full-time employee.
     * Onboarded 8 junior group members in Cambridge and created code, documentation, pipelines and workflows to accelerate their integration into the work environment.
+
+## Skills and Development
+* **Programming environments:** Python ([Optimization example](https://nbviewer.jupyter.org/github/sharash/polynomial-optimization/blob/main/polynomial.ipynb)), R ([Clustering evaluation package](https://github.com/Core-Bioinformatics/ClustAssess), [Random Forest feature selection example](https://htmlpreview.github.io/?https://github.com/Core-Bioinformatics/Lawrence-et-al-2021-index-sort-feature-selection/blob/main/index-sort-feature-selection.html))
+
 
 
 
