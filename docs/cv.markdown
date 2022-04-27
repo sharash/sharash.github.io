@@ -33,15 +33,16 @@ permalink: /cv/
 * Planning and structuring classes, hands-on support to children and other volunteers.
 * Long-term development of the learning platforms and curriculum.
 
-##Teaching and Mentorship
+## Teaching and Mentorship
 **Teaching**
 * Developing curriculum and training materials for single-cell data analysis course in Cambridge (2022).
 * Intro to Machine Learning - Lecturing for PhD students and postdocs in Cambridge (2021).
 * Teaching coding to children and developing teaching materials and curriculum at Kodcentrum (2018-2019).
 
+
 * **Mentorship**
-⋅⋅* Coached Computer Science M.Sc. student through 6-month Cambridge internship with weekly 1-on-1s. Advised and assisted the intern to contribute to open-source software and co-author scientific publication (2021). The person is now joining the group as a full-time employee.
-⋅⋅* Onboarded 8 junior group members in Cambridge and created code, documentation, pipelines and workflows to accelerate their integration into the work environment.
+    * Coached Computer Science M.Sc. student through 6-month Cambridge internship with weekly 1-on-1s. Advised and assisted the intern to contribute to open-source software and co-author scientific publication (2021). The person is now joining the group as a full-time employee.
+    * Onboarded 8 junior group members in Cambridge and created code, documentation, pipelines and workflows to accelerate their integration into the work environment.
 
 
 
