@@ -10,7 +10,7 @@ layout: page
 
 <img style="float: right;" src="/images/about/head.jpg" width="200">
 
-I'm a Senior Data Scientist at [Avida Finance](https://www.avidafinance.com/en/start/), leading the company's risk modeling efforts. Through statistical modeling, tooling and systems, and coordinating cross-functional efforts around data and models, I help Avida evaluate credit risk accurately and at scale.
+I'm a Senior Data Scientist at [Avida Finance](https://www.avidafinance.com/en/start/), leading the company's risk modeling efforts. Through statistical modeling, building tooling and systems, and coordinating cross-functional efforts around data and models, I help Avida evaluate credit risk accurately and at scale.
 
 Before Avida, I was a bioinformatician at the [Cambridge Stem Cell Institute](https://www.stemcells.cam.ac.uk/) at the [University of Cambridge](https://www.cam.ac.uk/), which means I got to apply machine learning and statistics to cutting-edge biomedical research on a daily basis.
 
